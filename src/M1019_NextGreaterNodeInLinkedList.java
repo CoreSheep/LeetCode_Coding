@@ -1,10 +1,30 @@
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.Timer;
 
 class ListNode {
     int val;
     ListNode next;
     ListNode(int x) { val = x; }
+
+    public static ListNode create(int[] input){
+        ListNode head = new ListNode(-1);
+        ListNode tail = head;
+        for(int i : input){
+            ListNode node = new ListNode(i);
+            tail.next = node;
+            tail = tail.next;
+        }
+        tail.next = null;
+        return head;
+    }
+
+    public static void traverse(ListNode head){
+        ListNode p = head.next;
+        while (p != null){
+            System.out.println(p.val + "\t");
+        }
+    }
 }
 
 public class M1019_NextGreaterNodeInLinkedList {

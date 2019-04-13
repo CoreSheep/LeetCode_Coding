@@ -28,15 +28,22 @@ public class M739_DailyTemperature {
         return res;
     }
 
+    /**
+     * using stack to store
+     * @param T
+     * @return
+     */
     public static int[] solution2(int[] T){
         Stack<Integer> stack = new Stack<>();
         int[] res = new int[T.length];
         for(int i = 0; i < T.length; i++){
+
+            //pop out and write into res when finding out warmer day
             while (!stack.isEmpty() && T[i] > T[stack.peek()]){
                 int index = stack.pop();
                 res[index] = i - index;
             }
-            stack.push(i);
+            stack.push(i); //every element need to be pushed into stack
         }
         return res;
     }
